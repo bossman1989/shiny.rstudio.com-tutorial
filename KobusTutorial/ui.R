@@ -7,6 +7,8 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
+      actionButton(inputId = "norm", label = "Normal"),
+      actionButton(inputId = "unif", label = "Uniform"),
       sliderInput("bins",
                   "Number of bins:",
                   min = 1,
@@ -15,11 +17,12 @@ ui <- fluidPage(
       textInput(inputId = "title",
                 label = "Write a title",
                 value = "Histogram of Random Normal Values"),
-      actionButton(inputId = "clicks",
-                   label = "Click me")
+      actionButton(inputId = "go",
+                   label = "Update")
     ),
     
     mainPanel(
+      plotOutput("toggledist"),
       verbatimTextOutput("clicks"),
       plotOutput("distPlot"),
       plotOutput("ggplothist"),
